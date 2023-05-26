@@ -1,0 +1,22 @@
+<%= render 'form', bookmark: @bookmark %>
+
+
+
+<div>
+  <%= link_to "create a review", new_bookmark_review_path(@bookmark)%>
+  <%= link_to "edit this bookmark", edit_bookmark_path(@bookmark) %>
+  <%= link_to "Back to bookmark", bookmarks_path %>
+  <%= button_to "Destroy this bookmark", @bookmark, method: :delete %>
+</div>
+
+
+<p><strong>Movies</strong></p>
+
+  <ul class="list-group">
+    <% @bookmark.movies.each do |movie|%>
+      <p>
+        <%= movie.title%>
+      </p>
+      <% link_to 'supprimer cette review', movie_path(review), data: { turbo_method: :delete } %>
+    <% end %>
+  </ul>
